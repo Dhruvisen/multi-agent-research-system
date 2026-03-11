@@ -1,0 +1,29 @@
+research_task:
+  description: >-
+    Conduct a comprehensive search on {topic}. Identify 10 distinct, verified facts 
+    about the topic. For each fact, you must provide a brief description and the 
+    direct source URL from which it was found. Ensure the sources are high-quality 
+    and recent.
+  expected_output: >-
+    A list of 10 verified facts with their corresponding source URLs.
+  agent: research_analyst
+
+analysis_task:
+  description: >-
+    Analyze the 10 verified facts provided by the researcher about {topic}. 
+    Categorize these findings into three specific sections: 'Trends', 'Challenges', 
+    and 'Opportunities'. Explain the significance of each fact within its category 
+    and how they collectively shape the landscape of this topic.
+  expected_output: >-
+    A structured analysis document categorized into 'Trends', 'Challenges', and 'Opportunities'.
+  agent: information_architect
+
+writing_task:
+  description: >-
+    Synthesize the research and analysis into a professional Markdown report on {topic}. 
+    The report MUST include a Table of Contents, an Executive Summary, and detailed 
+    sections following the structured analysis provided. Ensure the tone is 
+    technical yet accessible.
+  expected_output: >-
+    A complete Markdown report with a Table of Contents and an Executive Summary.
+  agent: chief_technical_writer
