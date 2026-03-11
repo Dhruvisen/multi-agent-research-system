@@ -21,29 +21,32 @@ class ResearchAgents:
         provider = os.getenv("LLM_PROVIDER", "ollama").lower()
         
         if provider == "groq":
-            logger.info("Using Groq LLM provider")
+            model = os.getenv("GROQ_MODEL", "llama-3.2-1b-preview")
+            logger.info(f"Using Groq LLM provider with model: {model}")
             return LLM(
-                model=os.getenv("GROQ_MODEL", "groq/llama3-70b-8192"),
+                model=f"groq/{model}",
                 api_key=os.getenv("GROQ_API_KEY"),
                 temperature=0.7
             )
         elif provider == "gemini":
-            logger.info("Using Gemini LLM provider")
+            model = os.getenv("GEMINI_MODEL", "gemini-1.5-flash")
+            logger.info(f"Using Gemini LLM provider with model: {model}")
             return LLM(
-                model=f"gemini/{os.getenv('GEMINI_MODEL', 'gemini-1.5-flash')}",
+                model=f"gemini/{model}",
                 api_key=os.getenv("GOOGLE_API_KEY"),
                 temperature=0.7
             )
         elif provider == "ollama":
-            logger.info("Using Ollama LLM provider")
+            model = os.getenv("OLLAMA_MODEL", "llama3.2:1b")
+            logger.info(f"Using Ollama LLM provider with model: {model}")
             return LLM(
-                model=f"ollama/{os.getenv('OLLAMA_MODEL', 'llama3')}",
+                model=f"ollama/{model}",
                 base_url=os.getenv("OLLAMA_BASE_URL", "http://localhost:11434"),
                 temperature=0.7
             )
         else:
             logger.warning(f"Unknown provider: {provider}, defaulting to Ollama")
-            return LLM(model="ollama/llama3")
+            return LLM(model="ollama/llama3.2:1b")
 
     def research_analyst(self) -> Agent:
         config = self.agents_config['research_analyst']

@@ -49,7 +49,7 @@ Edit `.env` to select your provider (`groq`, `gemini`, or `ollama`) and add the 
 To start a new research project, simply run:
 
 ```bash
-uv run -m src.main
+uv run main.py
 ```
 
 1.  **Enter Topic**: When prompted, provide your research subject.
@@ -66,11 +66,11 @@ uv run -m src.main
 │   ├── agents.yaml      # Personality and goals of agents
 │   └── tasks.yaml       # Detailed task requirements
 ├── src/
-│   ├── main.py          # Orchestration and HITL logic
 │   ├── agents.py        # CrewAI Agent factory
 │   ├── tasks.py         # CrewAI Task factory
 │   ├── tools.py         # Resilient Search tool
 │   └── logger.py        # Production logging
+├── main.py              # Orchestration and HITL logic
 ├── pyproject.toml       # uv project configuration
 └── README.md            # You are here
 ```
@@ -94,3 +94,14 @@ git push -u origin main
 
 ## ⚖️ License
 MIT License. Feel free to use and modify for your own research projects!
+
+---
+
+## 🔮 What's Next (MARS 2.0)
+The following enhancements are planned to make the system more robust and user-friendly:
+
+1.  **Streamlit Dashboard**: A professional web interface to replace the CLI.
+2.  **API Key Validator**: Proactive checks to catch "Invalid API Key" errors before agents start.
+3.  **Model Smart-Switching**: Using `llama3.2:1b` for fast research and a larger model for the final technical writing.
+4.  **Vector Memory**: Integrating ChromaDB to allow agents to remember facts across multiple sessions.
+5.  **Multi-Format Export**: One-click export of reports to PDF and HTML.
